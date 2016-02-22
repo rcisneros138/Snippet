@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "_HomeLayout";
+}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+  
+   
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/parallax")
+</head>
+
+<div id="header-wrapper" data-parallax="scroll" data-position="top" data-bleed="10" data-image-src="Images/computerNotebook.jpg" data-natural-width="2600" data-natural-height="1200" style="height: 22em">
+
+    <div id="header" class="container">
+        <div id="logo">
+            <spvan class="icon icon-group"></spvan>
+            <h1><a href="#">CLiP</a></h1>
+            <span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></span>
+        </div>
+        <div id="triangle-up"></div>
+    </div>
+</div>
+<div id="menu-wrapper" class="navabar">
+    <div id="menu">
+        <ul>
+            <li class="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>
+
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <li>@Html.Partial("_LoginPartial")</li>
+
+        </ul>
+
+    </div>
+
+</div>
+@RenderBody()
+
+<div id="header-wrapper" data-parallax="scroll" data-position="top" data-bleed="10" data-image-src="Images/computerNotebook.jpg" data-natural-width="2600" data-natural-height="1200" style="height: 22em"></div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)

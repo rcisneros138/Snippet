@@ -1,0 +1,55 @@
+﻿@using Snippets.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_loginView.cshtml";
+}
+
+
+<div>
+    <div class="login-block">
+        
+            <h1>Login</h1>
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })*@
+                    <div>
+                        @Html.TextBoxFor(m => m.Email, new {  @id = "username", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
+                    <div>
+                        @Html.PasswordFor(m => m.Password, new {  @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+                   
+                
+                <div>
+                  
+                  <hr />
+                    @Html.ActionLink("Register", "Register", null,  new { @class = "btn btn-primary btn-default btn-block" })
+                </div>
+                
+            }
+        
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+</div>
+

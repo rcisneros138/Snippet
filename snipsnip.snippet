@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>INSERT SNIPPET CODE HERE</Title>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+              public static List<int>
+                getPlotValues()
+                {
+                List<int>
+                  coordinates = new List<int>();
+
+            foreach (string item in File.ReadLines("Plots.txt"))
+            {
+                string[] coordinateArray = item.Split(',');
+                foreach (string plotCoord in coordinateArray)
+                {
+                    coordinates.Add(Convert.ToInt32(plotCoord));
+                }
+            }
+            return coordinates;
+        }
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
+
