@@ -1,5 +1,11 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+@{
+    ViewBag.Title = "MasonLayout";
+}
+
+<head>
+    @Styles.Render("~/Content/css")
+</head>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +20,8 @@
         <div id="menu">
             <ul>
                 @*<li class="current_page_item"><a href="#" accesskey="1" title=""></a></li>*@
-                
-             
+
+
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -30,27 +36,24 @@
                     <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                     <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
                 }
-                
-                
+
+
 
             </ul>
             @*@Html.Partial("_LoginPartial")*@
         </div>
 
     </div>
-    @RenderBody() 
-
-
  
-    
-  
+
+
+
+
+
 </body>
 
+
+@Scripts.Render("~/bundles/modernizr")
 @Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
-
-   
-
-</html>
-
+@Scripts.Render("~/Bundles/Masonry")
+@RenderBody()

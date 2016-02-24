@@ -35,7 +35,7 @@
                 <div>
                     <button type="submit">Submit</button>
                 </div>
-                   
+                 
                 
                 <div>
                   
@@ -44,12 +44,15 @@
                 </div>
                 
             }
-        
+        <div>
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </div>
+
     </div>
-    <div class="col-md-4">
+    @*<div class="col-md-4">
         <section id="socialLoginForm">
             @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
-    </div>
+    </div>*@
 </div>
 

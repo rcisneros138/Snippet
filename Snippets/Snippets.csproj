@@ -58,6 +58,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -166,23 +167,49 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\snippetCollectionsController.cs" />
+    <Compile Include="Controllers\WebsiteThumbnail.cs" />
+    <Compile Include="Migrations\201602232027160_collectionsadded.cs" />
+    <Compile Include="Migrations\201602232027160_collectionsadded.Designer.cs">
+      <DependentUpon>201602232027160_collectionsadded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602232029496_collectionsadded2.cs" />
+    <Compile Include="Migrations\201602232029496_collectionsadded2.Designer.cs">
+      <DependentUpon>201602232029496_collectionsadded2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602232044440_collectionsadded3.cs" />
+    <Compile Include="Migrations\201602232044440_collectionsadded3.Designer.cs">
+      <DependentUpon>201602232044440_collectionsadded3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\snippetCollection.cs" />
+    <Compile Include="Models\Snippet_snippetCollection.cs" />
+    <Compile Include="Models\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SnippetsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602222343526_first.cs" />
+    <Compile Include="Migrations\201602222343526_first.Designer.cs">
+      <DependentUpon>201602222343526_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Snippet.cs" />
+    <Compile Include="Models\SnippetsContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts.css" />
+    <Content Include="Content\hover.css" />
     <Content Include="Content\Login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -201,6 +228,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\masonry.pkgd.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\parallax.js" />
     <Content Include="Scripts\parallax.min.js" />
@@ -243,6 +271,20 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\Shared\_loginView.cshtml" />
+    <Content Include="Views\Snippets\Create.cshtml" />
+    <Content Include="Views\Snippets\Delete.cshtml" />
+    <Content Include="Views\Snippets\Details.cshtml" />
+    <Content Include="Views\Snippets\Edit.cshtml" />
+    <Content Include="Views\Snippets\Index.cshtml" />
+    <Content Include="Views\Shared\MasonLayout.cshtml" />
+    <Content Include="Views\snippetCollections\Create.cshtml" />
+    <Content Include="Views\snippetCollections\Delete.cshtml" />
+    <Content Include="Views\snippetCollections\Details.cshtml" />
+    <Content Include="Views\snippetCollections\Edit.cshtml" />
+    <Content Include="Views\snippetCollections\Index.cshtml" />
+    <Content Include="Views\snippetCollections\_Collections.cshtml" />
+    <Content Include="Views\snippetCollections\partialCollections.cshtml" />
+    <Content Include="Views\Shared\_MasonPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -254,6 +296,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602222343526_first.resx">
+      <DependentUpon>201602222343526_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602232027160_collectionsadded.resx">
+      <DependentUpon>201602232027160_collectionsadded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602232029496_collectionsadded2.resx">
+      <DependentUpon>201602232029496_collectionsadded2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602232044440_collectionsadded3.resx">
+      <DependentUpon>201602232044440_collectionsadded3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

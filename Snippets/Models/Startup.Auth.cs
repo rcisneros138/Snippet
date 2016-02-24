@@ -58,11 +58,12 @@ namespace Snippets
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "301235685590-j21qp3n1k2fok5sk8co815j02b1gf42a.apps.googleusercontent.com",
+                ClientSecret = "hSqfe8fJ7PZBaiyKXUkh7RcZ",
+                //CallbackPath = new PathString("/signin-google")
+            });
         }
     }
 }

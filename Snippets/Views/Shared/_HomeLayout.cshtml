@@ -22,7 +22,7 @@
         <div id="logo">
             <spvan class="icon icon-group"></spvan>
             <h1><a href="#">CLiP</a></h1>
-            <span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></span>
+            <span>Share <a href="http://templated.co" rel="nofollow">Everything</a></span>
         </div>
         <div id="triangle-up"></div>
     </div>
@@ -30,12 +30,26 @@
 <div id="menu-wrapper" class="navabar">
     <div id="menu">
         <ul>
-            <li class="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>
+            @*<li class="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>*@
 
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("About", "About", "Home")</li>
-            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            <li>@Html.Partial("_LoginPartial")</li>
+            @if (Request.IsAuthenticated)
+            {
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("LogOut","LogOff","Account",null, new { onclick= "LogoutFromGoogle();" })</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            }
+
+
+            @*<li>@Html.Partial("_LoginPartial")</li>*@
 
         </ul>
 
@@ -49,3 +63,15 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
+<script type="text/javascript">
+var win;
+function LogoutFromGoogle() {
+
+win = window.open("http://accounts.google.com/logout", "something", "width=550,height=570");
+
+win.close();
+
+}
+</script>

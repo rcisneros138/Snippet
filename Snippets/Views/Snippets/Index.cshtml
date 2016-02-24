@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Snippets.Models.Snippet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasonLayout.cshtml";
+  
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/hover.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/animate.css" />
+</head>
+<br />
+<div class="container">
+    <div id="content" class="content">
+        @foreach (var item in Model)
+        {
+            <div class="tileItem text-center">
+                <div class="hvr-float-shadow">
+                    <a href="@item.Link"><img style="height:150px;" src="~/Images/snippet.jpg" /></a>
+                    @*<iframe src="http://www.google.com"></iframe>*@
+                    <p>@item.Link</p>
+                    <p>@item.description</p>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </div>
+            </div>
+
+        }
+        
+        
+    </div>
+</div>
+<div class="container">
+    @Html.Action("partialCollections", "snippetCollections")
+</div>
+    
+
+
+<script>
+$(function () {
+    var $container = $('#content');
+
+
+    $container.masonry({
+        columnWidth: 200,
+        itemSelector: '.tileItem',
+        isFitWidth: true,
+        isAnimated: !Modernizr.csstransitions
+    })
+    var $children = $container.children();
+    $children.addClass("animated zoomIn");
+    
+
+
+
+
+});
+</script>

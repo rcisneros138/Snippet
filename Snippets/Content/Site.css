@@ -55,7 +55,7 @@ a:hover
 
 .container
 {
-	margin: 0px auto;
+	margin: 0 auto;
 	width: 1200px;
 }
 
@@ -1010,4 +1010,30 @@ ul.contact li a.icon-rss:before
 #portfolio h2
 {
 	text-align: center;
+}
+input{
+    border:none;
+}
+
+iframe {
+    overflow: hidden;
+    width: 960px;
+    height: 480px;
+    border: #49483E solid 1em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    -moz-transform-origin: 0 0;
+    -moz-transform: scale(.3);
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: scale(.3);
+    -o-transform-origin: 0 0;
+    -o-transform: scale(.3);
+    transform-origin: 0 0;
+    transform: scale(.3);
+}
+.snippetBackground{
+    background-color:lightseagreen;
+    width:13em;
+   
 }
