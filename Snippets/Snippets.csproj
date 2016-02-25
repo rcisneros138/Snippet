@@ -168,6 +168,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\snippetCollectionsController.cs" />
+    <Compile Include="Controllers\Snippet_snippetCollectionController.cs" />
     <Compile Include="Controllers\WebsiteThumbnail.cs" />
     <Compile Include="Migrations\201602232027160_collectionsadded.cs" />
     <Compile Include="Migrations\201602232027160_collectionsadded.Designer.cs">
@@ -181,6 +182,23 @@
     <Compile Include="Migrations\201602232044440_collectionsadded3.Designer.cs">
       <DependentUpon>201602232044440_collectionsadded3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602242342485_new.cs" />
+    <Compile Include="Migrations\201602242342485_new.Designer.cs">
+      <DependentUpon>201602242342485_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602250005487_ihatemylife.cs" />
+    <Compile Include="Migrations\201602250005487_ihatemylife.Designer.cs">
+      <DependentUpon>201602250005487_ihatemylife.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602250139083_kkkkk.cs" />
+    <Compile Include="Migrations\201602250139083_kkkkk.Designer.cs">
+      <DependentUpon>201602250139083_kkkkk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602250326133_omgplzwork.cs" />
+    <Compile Include="Migrations\201602250326133_omgplzwork.Designer.cs">
+      <DependentUpon>201602250326133_omgplzwork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Collections_Snippet_CombinedModel.cs" />
     <Compile Include="Models\snippetCollection.cs" />
     <Compile Include="Models\Snippet_snippetCollection.cs" />
     <Compile Include="Models\Startup.Auth.cs" />
@@ -277,14 +295,17 @@
     <Content Include="Views\Snippets\Edit.cshtml" />
     <Content Include="Views\Snippets\Index.cshtml" />
     <Content Include="Views\Shared\MasonLayout.cshtml" />
+    <Content Include="Views\Shared\_MasonPartial.cshtml" />
+    <Content Include="Views\Snippet_snippetCollection\Create.cshtml" />
+    <Content Include="Views\Snippet_snippetCollection\Delete.cshtml" />
+    <Content Include="Views\Snippet_snippetCollection\Details.cshtml" />
+    <Content Include="Views\Snippet_snippetCollection\Edit.cshtml" />
+    <Content Include="Views\Snippet_snippetCollection\Index.cshtml" />
     <Content Include="Views\snippetCollections\Create.cshtml" />
     <Content Include="Views\snippetCollections\Delete.cshtml" />
     <Content Include="Views\snippetCollections\Details.cshtml" />
     <Content Include="Views\snippetCollections\Edit.cshtml" />
     <Content Include="Views\snippetCollections\Index.cshtml" />
-    <Content Include="Views\snippetCollections\_Collections.cshtml" />
-    <Content Include="Views\snippetCollections\partialCollections.cshtml" />
-    <Content Include="Views\Shared\_MasonPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -309,6 +330,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602232044440_collectionsadded3.resx">
       <DependentUpon>201602232044440_collectionsadded3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602242342485_new.resx">
+      <DependentUpon>201602242342485_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602250005487_ihatemylife.resx">
+      <DependentUpon>201602250005487_ihatemylife.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602250139083_kkkkk.resx">
+      <DependentUpon>201602250139083_kkkkk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602250326133_omgplzwork.resx">
+      <DependentUpon>201602250326133_omgplzwork.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

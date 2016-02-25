@@ -1,4 +1,4 @@
-﻿@model Snippets.Models.Snippet
+﻿@model Snippets.Models.Collections_Snippet_CombinedModel
 
 @{
     ViewBag.Title = "Create";
@@ -16,19 +16,22 @@
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.snippet.Link, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-6">
-                    @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.snippet.Link, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.snippet.Link, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.snippet.description, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-6">
-                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.snippet.description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.snippet.description, "", new { @class = "text-danger" })
                 </div>
+            </div>
+            <div>
+                @Html.DropDownListFor(m => m.selectedCollectionID, Model.collectionDropdown)
             </div>
 
             <div class="form-group">

@@ -26,6 +26,20 @@ namespace Snippets.Controllers
             return View(db.snippets.Where(x => x.SubmitterUserId == userID));
         }
 
+        public ActionResult ManageCollection(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Snippet snippet = db.snippets.Find(id);
+            if (snippet == null)
+            {
+                return HttpNotFound();
+            }
+            return View(snippet);
+        }
+
         // GET: Snippets/Details/5
         public ActionResult Details(int? id)
         {
@@ -56,7 +70,21 @@ namespace Snippets.Controllers
         // GET: Snippets/Create
         public ActionResult Create()
         {
-            return View();
+            List<SelectListItem> collectionsForDropdown = new List<SelectListItem>();
+            foreach (var collection in db.collections)
+            {
+                collectionsForDropdown.Add(new SelectListItem() { Text = collection.Title, Value = collection.ID.ToString() });
+            }
+
+            Collections_Snippet_CombinedModel model = new Collections_Snippet_CombinedModel
+            {
+                collection = db.collections.ToList(),
+                collectionDropdown = collectionsForDropdown,
+                snippet = new Snippet()
+            };
+           
+            // model must contain both snippet and collections
+            return View(model);
         }
        
 
@@ -65,10 +93,14 @@ namespace Snippets.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Link,description")] Snippet snippet)
+        public ActionResult Create([Bind(Include = "ID,Link,description")] Snippet snippet, Collections_Snippet_CombinedModel collection)
         {
             if (ModelState.IsValid)
             {
+                //snippet.SnippetCollection = 
+                snippetCollection CurrentSnippetCollection = db.collections.Find(Convert.ToInt32( collection.selectedCollectionID));
+                CurrentSnippetCollection.snippets.Add(snippet);
+                snippet.SnippetCollection = CurrentSnippetCollection;
                 snippet.SubmitterUserId = User.Identity.GetUserId();
                 db.snippets.Add(snippet);
                 db.SaveChanges();

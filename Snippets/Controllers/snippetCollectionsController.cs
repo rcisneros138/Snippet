@@ -14,6 +14,7 @@ namespace Snippets.Controllers
     public class snippetCollectionsController : Controller
     {
         private SnippetsContext db = new SnippetsContext();
+        private ApplicationDbContext context = new ApplicationDbContext();
 
         // GET: snippetCollections
         public ActionResult Index()
@@ -21,11 +22,20 @@ namespace Snippets.Controllers
             string userID = User.Identity.GetUserId();
             return View(db.collections.Where(x=>x.SubmitterUserId == userID));
         }
-        public ActionResult partialCollections()
-        {
-            string userID = User.Identity.GetUserId();
-            return PartialView(db.collections.Where(x => x.SubmitterUserId == userID));
 
+         public ActionResult ManageCollection(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            snippetCollection snippet = db.collections.Find(id);
+            List<Snippet> snippetsInCollection = snippet.snippets;
+            if (snippet == null)
+            {
+                return HttpNotFound();
+            }
+            return View(snippet);
         }
 
         // GET: snippetCollections/Details/5
@@ -36,6 +46,7 @@ namespace Snippets.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             snippetCollection snippetCollection = db.collections.Find(id);
+            
             if (snippetCollection == null)
             {
                 return HttpNotFound();
@@ -46,6 +57,9 @@ namespace Snippets.Controllers
         // GET: snippetCollections/Create
         public ActionResult Create()
         {
+            //get model of snippet collections
+
+          
             return View();
         }
 
@@ -67,6 +81,28 @@ namespace Snippets.Controllers
             return View(snippetCollection);
         }
 
+        public ActionResult addSnippetToCollection(int? id)
+        {
+          //make new model and put snippet collection and snippet in there  
+
+
+            if (id==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            snippetCollection SnippetCollection = db.collections.Find(id);
+            if (SnippetCollection == null)
+            {
+                return HttpNotFound();
+            }
+            return View(SnippetCollection);
+        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult addSnippetToCollection(snippetCollection SnipperCollection)
+        //{
+
+        //}
         // GET: snippetCollections/Edit/5
         public ActionResult Edit(int? id)
         {

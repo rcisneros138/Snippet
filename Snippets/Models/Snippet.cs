@@ -11,5 +11,7 @@ namespace Snippets.Models
         public string SubmitterUserId { get; set; }
         public string Link { get; set; }
         public string description { get; set; }
+
+        public virtual snippetCollection  SnippetCollection{ get; set; }
     }
 }
