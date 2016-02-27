@@ -198,6 +198,18 @@
     <Compile Include="Migrations\201602250326133_omgplzwork.Designer.cs">
       <DependentUpon>201602250326133_omgplzwork.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602251524257_virtual.cs" />
+    <Compile Include="Migrations\201602251524257_virtual.Designer.cs">
+      <DependentUpon>201602251524257_virtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602252211460_savecount.cs" />
+    <Compile Include="Migrations\201602252211460_savecount.Designer.cs">
+      <DependentUpon>201602252211460_savecount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602261624457_boolitup.cs" />
+    <Compile Include="Migrations\201602261624457_boolitup.Designer.cs">
+      <DependentUpon>201602261624457_boolitup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Collections_Snippet_CombinedModel.cs" />
     <Compile Include="Models\snippetCollection.cs" />
     <Compile Include="Models\Snippet_snippetCollection.cs" />
@@ -306,6 +318,8 @@
     <Content Include="Views\snippetCollections\Details.cshtml" />
     <Content Include="Views\snippetCollections\Edit.cshtml" />
     <Content Include="Views\snippetCollections\Index.cshtml" />
+    <Content Include="Views\Home\mostSavedPartial.cshtml" />
+    <Content Include="Views\snippetCollections\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,6 +356,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602250326133_omgplzwork.resx">
       <DependentUpon>201602250326133_omgplzwork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602251524257_virtual.resx">
+      <DependentUpon>201602251524257_virtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602252211460_savecount.resx">
+      <DependentUpon>201602252211460_savecount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602261624457_boolitup.resx">
+      <DependentUpon>201602261624457_boolitup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

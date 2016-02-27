@@ -23,9 +23,15 @@
                 <div class="hvr-grow-shadow">
                     <p>@item.Title</p>
                     <a href="@Url.Action("Details", new { id = item.ID })"><img class="snippetBackground" src="~/Images/snippet.jpg" /></a>
+                    <br />
+                    <a href="@Url.Action("Delete", new { id = item.ID })">Delete</a>
+                    <br />
+                    <a href="@Url.Action("MakePublic", new { id = item.ID })">Publish</a>
+                    <br />
+
                     @*<iframe src="http://www.google.com"></iframe>*@
 
-                    <p></p>
+                   
 
                 </div>
             </div>

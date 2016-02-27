@@ -302,6 +302,19 @@ ul.contact li a.icon-rss:before
 /* Button Style                                                                  */
 /*********************************************************************************/
 
+#snipButton{
+    margin:55em;
+  
+	padding: 1.3em 3em;
+	background: #FFC000;
+	letter-spacing: 0.20em;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #FFF;
+
+}
+
 	.button
 {
 	display: inline-block;
@@ -317,6 +330,7 @@ ul.contact li a.icon-rss:before
 	text-transform: uppercase;
 	font-weight: 600;
 	color: #FFF;
+    border:none;
 }
 
 .button:hover
@@ -396,6 +410,7 @@ ul.contact li a.icon-rss:before
 	#logo h1
 	{
 		font-size: 3.5em;
+        color:dimgrey;
         
 	}
 	
@@ -1011,29 +1026,62 @@ ul.contact li a.icon-rss:before
 {
 	text-align: center;
 }
-input{
-    border:none;
-}
 
-iframe {
-    overflow: hidden;
-    width: 960px;
-    height: 480px;
-    border: #49483E solid 1em;
-    -moz-border-radius: 1em;
-    -webkit-border-radius: 1em;
-    border-radius: 1em;
-    -moz-transform-origin: 0 0;
-    -moz-transform: scale(.3);
-    -webkit-transform-origin: 0 0;
-    -webkit-transform: scale(.3);
-    -o-transform-origin: 0 0;
-    -o-transform: scale(.3);
-    transform-origin: 0 0;
-    transform: scale(.3);
-}
+
+
 .snippetBackground{
     background-color:lightseagreen;
     width:13em;
    
+}
+
+
+/*********************************************************************************/
+/* searchBar                                                                      */
+/*********************************************************************************/
+
+
+
+#search {
+ height: 60px;
+ font-size: 40px;
+ font-family: Arial, Helvetica, sans-serif;
+ font-weight: 100;
+ border: none;
+ outline: none;
+ color: #555;
+ padding: 3px;
+ padding-left:1em;
+ padding-right: 60px;
+ width: 0px;
+ text-align:center;
+ background: none;
+ z-index: 3;
+ cursor: pointer;
+ width: 600px;
+ z-index: 1;
+ border-bottom: 1px solid #BBB;
+ cursor: text;
+ 
+}
+
+#search_submit {
+ height: 67px;
+ width: 63px;
+ background-color:transparent;
+ color:#FFC000;
+
+ border: none;
+ position:relative;
+ top:0;
+ right:0;
+ z-index: 2;
+ cursor: pointer;
+ opacity: 0.4;
+}
+#wrapTHIS{
+    
+    position:relative;
+    margin-left:4em;
+    
 }

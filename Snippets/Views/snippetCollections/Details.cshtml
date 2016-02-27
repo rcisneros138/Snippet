@@ -2,26 +2,67 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/MasonLayout.cshtml";
 }
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/hover.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/animate.css" />
+    @Scripts.Render("~/bundles/parallax")
+</head>
+<h2>@Model.Title</h2>
 
-<h2>Details</h2>
+<div class="container">
+    <div id="contentP" class="contentP">
+        @foreach (var snippet in Model.snippets)
+        {
+            <br />
+            <br />
+            
+            <div class="tileItemP text-center">
+                <div class="hvr-grow-shadow">
+                    <p>@snippet.Link</p>
+                    <a href="@Url.Action("Details","Snippets", new { id = snippet.ID })"><img class="snippetBackground" src="~/Images/snippet.jpg" /></a>
+                    @*<iframe src="http://www.google.com"></iframe>*@
 
-<div>
-    <h4>snippetCollection</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+                    <p></p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
 
-       
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<script>
+    $(document).ready(function () {
+
+        var $container = $('#contentP');
+        $container.masonry({
+            columnWidth: 200,
+            itemSelector: '.tileItemP',
+            isFitWidth: true,
+            isAnimated: !Modernizr.csstransitions
+        })
+        var $children = $container.children();
+        $children.addClass("animated zoomIn");
+
+    });
+</script>
+        @*<div>
+                <h4>snippetCollection</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
+
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>*@

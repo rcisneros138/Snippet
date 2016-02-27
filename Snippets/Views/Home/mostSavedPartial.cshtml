@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Snippets.Models.snippetCollection>
+
+@*<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/hover.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/animate.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Bundles/Masonry")
+</head>*@
+
+
+<br />
+
+<div class="container">
+    <div id="contentP" class="contentP">
+        @foreach (var item in Model)
+        {
+            <br />
+            <div class="tileItemP text-center">
+                <div class="hvr-grow-shadow">
+                    <p>@item.Title</p>
+                    <a href="@Url.Action("Details","snippetCollections", new { id = item.ID })"><img class="snippetBackground" src="~/Images/snippet.jpg" /></a>
+                    <br />
+                    <a href="@Url.Action("SaveCollection","snippetCollections", new { id = item.ID })">Save</a>
+                    @*<iframe src="http://www.google.com"></iframe>*@
+
+
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+
+    var $container = $('#contentP');
+    $container.masonry({
+        columnWidth: 200,
+        itemSelector: '.tileItemP',
+        isFitWidth: true,
+        isAnimated: !Modernizr.csstransitions
+    })
+    var $children = $container.children();
+    $children.addClass("animated zoomIn");
+
+});
+</script>

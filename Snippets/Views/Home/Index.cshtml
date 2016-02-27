@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
@@ -6,37 +7,58 @@
 
 <body>
 
+
+
 <div id="wrapper">
     <div id="featured-wrapper">
+       
 
         <div class="extra2 container">
             <div class="ebox1">
-                @*<div class="hexagon"><span class="icon icon-lightbulb"></span></div>*@
+               
                 <div class="title">
                     <h2>Clips from the web</h2>
                     <span class="byline">Compliled here</span>
                 </div>
-                <p>This is <strong>Plushiness</strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. The photos in this template are from <a href="http://fotogrph.com/"> Fotogrph</a>. This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so you're pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :) </p>
-                <a href="Snippets" class="button">My Snippets</a>
-            </div>
+                <br />
+                @using (Html.BeginForm("Search", "snippetCollections"))
+                {
 
-            @*<div class="ebox2">*@
-                @*<div class="hexagon"><span class="icon icon-bullhorn"></span></div>
-                <div class="title">
-                    <h2>Donec dictum metus</h2>
-                    <span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
-                </div>
-                <p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Pellentesque tristique ante ut risus. Quisque dictum. Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum porta lectus. Donec placerat odio vel elit. Nullam ante orci, pellentesque eget, tempus quis, ultrices in, est. Curabitur sit amet nulla. Nam in massa. Sed vel tellus. Curabitur sem urna, consequat vel, suscipit in, mattis placerat, nulla. Sed ac leo. Pellentesque imperdiet.</p>
-                <a href="#" class="button">Etiam posuere</a>*@
-            @*</div>*@
+
+                    <div id="wrapTHIS">
+                        @Html.TextBox("query", "", new { @Placeholder = "What are you interested in?", @id = "search" })
+                        <button type="submit" id="search_submit">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                }
+                <br />
+                <a style="width:19em;" href="Snippets" class="button">My Snippets</a>
+                <a style="width:19em;" href="snippetCollections" class="button">My Collections</a>
+            </div>
+          
+
 
         </div>
 
     </div>
 </div>
 
+    <div id="header-wrapper" data-parallax="scroll" data-position="top" data-bleed="10" data-image-src="Images/pooterDesk2.jpg" data-natural-width="2600" data-natural-height="1200" style="height: 14em">
+        <div >
+            <h1 style="text-align:center;">Most Saved Collections</h1>
+        </div>
+
+
+
+      </div>
+
+
+        <div style=background-color:#fff;>
+            @Html.Action("mostSavedPartial", "Home")
+        </div>
+
 
 </body>
-<script>
 
-</script>

@@ -1,15 +1,16 @@
-﻿<head>
-    @Styles.Render("~/Content/css")
-</head>
+﻿
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/hover.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/animate.css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Bundles/Masonry")
 
 </head>
-@Scripts.Render("~/bundles/modernizr")
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/Bundles/Masonry")
+
 @RenderBody()

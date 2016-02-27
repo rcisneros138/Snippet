@@ -99,9 +99,11 @@ namespace Snippets.Controllers
             {
                 //snippet.SnippetCollection = 
                 snippetCollection CurrentSnippetCollection = db.collections.Find(Convert.ToInt32( collection.selectedCollectionID));
-                CurrentSnippetCollection.snippets.Add(snippet);
+                
                 snippet.SnippetCollection = CurrentSnippetCollection;
                 snippet.SubmitterUserId = User.Identity.GetUserId();
+                CurrentSnippetCollection.snippets.Add(snippet);
+
                 db.snippets.Add(snippet);
                 db.SaveChanges();
                 return RedirectToAction("Index");

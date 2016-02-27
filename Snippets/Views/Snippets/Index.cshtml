@@ -14,7 +14,11 @@
 <div id="header-wrapper" data-parallax="scroll" data-position="top" data-bleed="10" data-image-src="Images/topDown.jpg" data-natural-width="2600" data-natural-height="1200" style="height: 12em"></div>
 <br />
 <br />
-<div><h1 style="text-align:center;">Snippets</h1></div>
+<a  href="/Snippets/Create" id="snipButton">Create a Snippet</a>
+<br />
+<br />
+<hr />
+<div><h1 style="text-align:center;">Snippet's You've Made! nice Work.</h1></div>
     <div class="container">
         <div id="content" class="content">
             @foreach (var item in Model)
@@ -40,29 +44,24 @@
     <div><h1 style="text-align:center;">Collections</h1></div>
 <br />
 <br />
-    <div class="container">
-        @*@Html.Action("partialCollections", "snippetCollections")*@
-    </div>
+   
 
 <br />
 <br />
     <script>
-        $(function () {
-            var $container = $('#content');
+$(document).ready(function() {
+
+    var $container = $('#content');
+    $container.masonry({
+        columnWidth: 200,
+        itemSelector: '.tileItem',
+        isFitWidth: true,
+        isAnimated: !Modernizr.csstransitions
+    })
+    var $children = $container.children();
+    $children.addClass("animated zoomIn");
+
+});
 
 
-            $container.masonry({
-                columnWidth: 200,
-                itemSelector: '.tileItem',
-                isFitWidth: true,
-                //isAnimated: !Modernizr.csstransitions
-            })
-            var $children = $container.children();
-            $children.addClass("animated zoomIn");
-
-
-
-
-
-        });
     </script>

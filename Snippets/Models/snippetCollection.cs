@@ -13,7 +13,11 @@ namespace Snippets.Models
 
         public string SubmitterUserId { get; set; }
 
-        public List<Snippet> snippets { get; set; }
+        public int SaveCount { get; set; }
+
+        public bool IsPublic { get; set; }
+
+        public virtual List<Snippet> snippets { get; set; }
 
         public snippetCollection()
         {
