@@ -303,9 +303,8 @@ ul.contact li a.icon-rss:before
 /*********************************************************************************/
 
 #snipButton{
-    margin:55em;
-  
-	padding: 1.3em 3em;
+    margin:28em;
+	padding: 2.3em 8em;
 	background: #FFC000;
 	letter-spacing: 0.20em;
 	text-decoration: none;
@@ -1084,4 +1083,7 @@ ul.contact li a.icon-rss:before
     position:relative;
     margin-left:4em;
     
+}
+#dropdown{
+
 }

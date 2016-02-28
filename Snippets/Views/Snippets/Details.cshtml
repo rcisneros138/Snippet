@@ -5,21 +5,16 @@
 }
 
 
-<<iframe src="http://www.keithhetzel.com"></iframe>
+
 <div class="container">
     <h2>Details</h2>
     <h4>Snippet</h4>
     <hr />
+    <iframe src="@Model.Link"></iframe>
+    
 
     
-    @*<dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Link)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Link)
-        </dd>
+    <dl class="dl-horizontal">
 
         <dt>
             @Html.DisplayNameFor(model => model.description)
@@ -29,7 +24,7 @@
             @Html.DisplayFor(model => model.description)
         </dd>
 
-    </dl>*@
+    </dl>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
         @Html.ActionLink("Back to List", "Index")

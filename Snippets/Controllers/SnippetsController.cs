@@ -70,16 +70,20 @@ namespace Snippets.Controllers
         // GET: Snippets/Create
         public ActionResult Create()
         {
+            string userID = User.Identity.GetUserId();
             List<SelectListItem> collectionsForDropdown = new List<SelectListItem>();
-            foreach (var collection in db.collections)
+            List<snippetCollection> collections = new List<snippetCollection>();
+            collections = db.collections.Where(x => x.SubmitterUserId == userID).ToList();
+            foreach (var collection in collections)
             {
                 collectionsForDropdown.Add(new SelectListItem() { Text = collection.Title, Value = collection.ID.ToString() });
             }
 
             Collections_Snippet_CombinedModel model = new Collections_Snippet_CombinedModel
             {
+
                 collection = db.collections.ToList(),
-                collectionDropdown = collectionsForDropdown,
+                collectionDropdown = collectionsForDropdown, //set a query to show only the collections created by the user.
                 snippet = new Snippet()
             };
            
@@ -97,8 +101,12 @@ namespace Snippets.Controllers
         {
             if (ModelState.IsValid)
             {
-                //snippet.SnippetCollection = 
+                
                 snippetCollection CurrentSnippetCollection = db.collections.Find(Convert.ToInt32( collection.selectedCollectionID));
+                if (CurrentSnippetCollection == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
                 
                 snippet.SnippetCollection = CurrentSnippetCollection;
                 snippet.SubmitterUserId = User.Identity.GetUserId();
@@ -108,8 +116,14 @@ namespace Snippets.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
 
-            return View(snippet);
+                
+            }
+
+            return RedirectToAction ("Index");
         }
 
         // GET: Snippets/Edit/5
