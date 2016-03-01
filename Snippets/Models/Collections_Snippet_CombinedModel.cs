@@ -13,6 +13,8 @@ namespace Snippets.Models
         public string selectedSnippetID { get; set; }
         public List<SelectListItem> snippetDropdown { get; set; }
 
+        public string url { get; set; }
+
 
 // collections below:
 

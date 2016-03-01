@@ -313,6 +313,17 @@ ul.contact li a.icon-rss:before
 	color: #FFF;
 
 }
+#snipButtonExtension{
+     margin:28em;
+     padding-top: 5em;
+	padding: 1.3em 5em;
+	background: #FFC000;
+	letter-spacing: 0.20em;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #FFF;
+}
 
 	.button
 {

@@ -66,6 +66,11 @@ namespace Snippets.Controllers
             //x.Dispose();
             return thumbnail.GetThumbnail();
         }
+       public ActionResult extensionView(string id)
+        {
+            ExtensionInfo model = new ExtensionInfo { Url = id };
+            return View(model);
+        }
 
         // GET: Snippets/Create
         public ActionResult Create()
@@ -83,11 +88,9 @@ namespace Snippets.Controllers
             {
 
                 collection = db.collections.ToList(),
-                collectionDropdown = collectionsForDropdown, //set a query to show only the collections created by the user.
+                collectionDropdown = collectionsForDropdown, 
                 snippet = new Snippet()
             };
-           
-            // model must contain both snippet and collections
             return View(model);
         }
        
@@ -125,6 +128,63 @@ namespace Snippets.Controllers
 
             return RedirectToAction ("Index");
         }
+        
+        public ActionResult ChromeCreate(string URL)
+        {
+            string userID = User.Identity.GetUserId();
+            List<SelectListItem> collectionsForDropdown = new List<SelectListItem>();
+            List<snippetCollection> collections = new List<snippetCollection>();
+            
+            collections = db.collections.Where(x => x.SubmitterUserId == userID).ToList();
+            foreach (var collection in collections)
+            {
+                collectionsForDropdown.Add(new SelectListItem() { Text = collection.Title, Value = collection.ID.ToString() });
+            }
+
+            Collections_Snippet_CombinedModel model = new Collections_Snippet_CombinedModel
+            {
+
+                collection = db.collections.ToList(),
+                collectionDropdown = collectionsForDropdown,
+                url = URL,
+                snippet = new Snippet()
+            };
+
+           
+            return View(model);
+        }
+        [HttpPost]
+        
+        public ActionResult ChromeCreate( Collections_Snippet_CombinedModel collection)
+        {
+      
+
+                snippetCollection CurrentSnippetCollection = db.collections.Find(Convert.ToInt32(collection.selectedCollectionID));
+                if (CurrentSnippetCollection == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Snippet snippet = collection.snippet;
+                snippet.SnippetCollection = CurrentSnippetCollection;
+                snippet.SubmitterUserId = User.Identity.GetUserId();
+                snippet.Link = collection.url;
+                
+                CurrentSnippetCollection.snippets.Add(snippet);
+                
+
+                db.snippets.Add(snippet);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            {
+                var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
+
+
+            }
+
+            return RedirectToAction("Index");
+        }
+ 
 
         // GET: Snippets/Edit/5
         public ActionResult Edit(int? id)

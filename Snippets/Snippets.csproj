@@ -223,6 +223,7 @@
       <DependentUpon>201602272045419_urlbackagain.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Collections_Snippet_CombinedModel.cs" />
+    <Compile Include="Models\ExtensionInfo.cs" />
     <Compile Include="Models\snippetCollection.cs" />
     <Compile Include="Models\Snippet_snippetCollection.cs" />
     <Compile Include="Models\Startup.Auth.cs" />
@@ -250,6 +251,7 @@
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ChromeStyle.css" />
     <Content Include="Content\fonts.css" />
     <Content Include="Content\hover.css" />
     <Content Include="Content\Login.css" />
@@ -332,6 +334,9 @@
     <Content Include="Views\snippetCollections\Index.cshtml" />
     <Content Include="Views\Home\mostSavedPartial.cshtml" />
     <Content Include="Views\snippetCollections\Search.cshtml" />
+    <Content Include="Views\Snippets\extensionView.cshtml" />
+    <Content Include="Views\Shared\_layoutExtension.cshtml" />
+    <Content Include="Views\Snippets\ChromeCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

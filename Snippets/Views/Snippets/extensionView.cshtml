@@ -1,0 +1,19 @@
+﻿@model Snippets.Models.ExtensionInfo
+@{
+    ViewBag.Title = "extensionView";
+    Layout = "~/Views/Shared/_layoutExtension.cshtml";
+}
+<body>
+
+    <div class="maincontainer" style="text-align:center;">
+        <br />  
+        <a  href="/Snippets/ChromeCreate/?URL=@Model.Url " class="button">Create Snippet</a>
+        <br />
+        <hr  />
+        <br />
+        <a href="/snippetCollections/Create" class="button">Create Collection</a>
+    </div>
+    <div class="maincontainer"></div>
+
+</body>
+

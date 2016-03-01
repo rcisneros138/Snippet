@@ -1,0 +1,11 @@
+﻿#maincontainer 
+{   
+ text-align: center;
+}
+body{
+    top:0px;
+padding-top:0;
+margin:auto; position:relative;
+width:15em;
+height:100em;
+}
