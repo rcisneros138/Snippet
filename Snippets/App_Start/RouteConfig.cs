@@ -26,8 +26,8 @@ namespace Snippets
                 );
             routes.MapRoute(
                 name: "extensionview",
-                url: "{controller}/{action}/{Id}",
-                defaults: new { Controller = "Snippets", Action = "extensionView", Id = UrlParameter.Optional }
+                url:"{controller}/{action}/{Id}",
+                defaults: new {Controller = "Snippets", Action= "extensionView", Id = UrlParameter.Optional }
                 );
         }
     }

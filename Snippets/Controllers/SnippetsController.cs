@@ -10,6 +10,7 @@ using Snippets.Models;
 using Microsoft.AspNet.Identity;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace Snippets.Controllers
 {
@@ -66,12 +67,53 @@ namespace Snippets.Controllers
             //x.Dispose();
             return thumbnail.GetThumbnail();
         }
-       public ActionResult extensionView(string id)
+        [AcceptVerbs(HttpVerbs.Post)]
+//        public ActionResult extensionView(FormCollection data)
+        public ActionResult extensionView(FormCollection data)
         {
-            ExtensionInfo model = new ExtensionInfo { Url = id };
-            return View(model);
+                ExtensionInfo model = new ExtensionInfo();
+            byte[] imageArray;
+
+
+            var image = data["imageData"];
+            
+            string url = data["url"];
+            
+
+            if (Request.Files["imageData"] != null)
+            {
+                using (var binaryReader = new BinaryReader(Request.Files["imageData"].InputStream))
+                {
+                    imageArray = binaryReader.ReadBytes(Request.Files["imageData"].ContentLength);// image
+
+                }
+                model = new ExtensionInfo { Url = url, Image = imageArray };
+                //Image pageImage = byteArrayToImage(imageArray);
+                //byte[] arrayImage = new byte[imageArray.Length];
+                //arrayImage = imageArray;
+            }
+                ExtensionInfo modeltopass = model;
+
+            TempData["modeltopass"] = modeltopass;
+            return RedirectToAction("ChromeCreate");
+            //return View(model);
         }
 
+        //public ActionResult extensionSavedefault(ExtensionInfo info)
+        //{
+        //    Snippet snippet = new Snippet
+        //    {
+        //        description = "test",
+                
+                
+        //    }
+        //}
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
         // GET: Snippets/Create
         public ActionResult Create()
         {
@@ -129,8 +171,9 @@ namespace Snippets.Controllers
             return RedirectToAction ("Index");
         }
         
-        public ActionResult ChromeCreate(string URL)
+        public ActionResult ChromeCreate(ExtensionInfo info)
         {
+            info = (ExtensionInfo)TempData["modeltopass"];
             string userID = User.Identity.GetUserId();
             List<SelectListItem> collectionsForDropdown = new List<SelectListItem>();
             List<snippetCollection> collections = new List<snippetCollection>();
@@ -146,11 +189,13 @@ namespace Snippets.Controllers
 
                 collection = db.collections.ToList(),
                 collectionDropdown = collectionsForDropdown,
-                url = URL,
+                url = info.Url,
+                Image = info.Image,
                 snippet = new Snippet()
             };
+            
 
-           
+
             return View(model);
         }
         [HttpPost]
@@ -158,7 +203,7 @@ namespace Snippets.Controllers
         public ActionResult ChromeCreate( Collections_Snippet_CombinedModel collection)
         {
       
-
+               
                 snippetCollection CurrentSnippetCollection = db.collections.Find(Convert.ToInt32(collection.selectedCollectionID));
                 if (CurrentSnippetCollection == null)
                 {
@@ -168,6 +213,8 @@ namespace Snippets.Controllers
                 snippet.SnippetCollection = CurrentSnippetCollection;
                 snippet.SubmitterUserId = User.Identity.GetUserId();
                 snippet.Link = collection.url;
+                snippet.image = collection.Image;
+            
                 
                 CurrentSnippetCollection.snippets.Add(snippet);
                 

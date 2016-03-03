@@ -8,5 +8,6 @@ namespace Snippets.Models
     public class ExtensionInfo
     {
         public string Url { get; set; }
+        public byte[] Image { get; set; }
     }
 }

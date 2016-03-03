@@ -15,8 +15,10 @@ namespace Snippets.Models
 
         public string url { get; set; }
 
+        public byte[] Image { get; set; }
 
-// collections below:
+
+        // collections below:
 
         public IEnumerable<snippetCollection> collection { get; set; }
         public string selectedCollectionID { get; set; }

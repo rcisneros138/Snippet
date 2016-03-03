@@ -222,6 +222,10 @@
     <Compile Include="Migrations\201602272045419_urlbackagain.Designer.cs">
       <DependentUpon>201602272045419_urlbackagain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603021656594_image.cs" />
+    <Compile Include="Migrations\201603021656594_image.Designer.cs">
+      <DependentUpon>201603021656594_image.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Collections_Snippet_CombinedModel.cs" />
     <Compile Include="Models\ExtensionInfo.cs" />
     <Compile Include="Models\snippetCollection.cs" />
@@ -391,6 +395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602272045419_urlbackagain.resx">
       <DependentUpon>201602272045419_urlbackagain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603021656594_image.resx">
+      <DependentUpon>201603021656594_image.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
