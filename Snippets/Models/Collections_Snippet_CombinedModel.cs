@@ -15,7 +15,7 @@ namespace Snippets.Models
 
         public string url { get; set; }
 
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
 
 
         // collections below:

@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201603021656594_image.Designer.cs">
       <DependentUpon>201603021656594_image.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603031520130_datauri.cs" />
+    <Compile Include="Migrations\201603031520130_datauri.Designer.cs">
+      <DependentUpon>201603031520130_datauri.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Collections_Snippet_CombinedModel.cs" />
     <Compile Include="Models\ExtensionInfo.cs" />
     <Compile Include="Models\snippetCollection.cs" />
@@ -398,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603021656594_image.resx">
       <DependentUpon>201603021656594_image.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603031520130_datauri.resx">
+      <DependentUpon>201603031520130_datauri.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

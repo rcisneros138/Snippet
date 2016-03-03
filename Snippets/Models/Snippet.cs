@@ -16,7 +16,7 @@ namespace Snippets.Models
 
         public string Link { get; set; }
         public string description { get; set; }
-        public byte[] image { get; set; }
+        public string image { get; set; }
         public virtual snippetCollection  SnippetCollection{ get; set; }
     }
 }
