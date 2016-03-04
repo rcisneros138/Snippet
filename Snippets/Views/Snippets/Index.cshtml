@@ -28,10 +28,21 @@
             {
                 <div class="tileItem text-center">
                     <div class="hvr-float-shadow">
-                        <p>@item.Link</p>
-                        <a href="@Url.Action("Details",new { id = item.ID })"><img style="height:150px;" src="~/Images/snippet.jpg" /></a>
+                       @if (item.image == null)
+                       {
+                        <a href="@Url.Action("Details",new { id = item.ID })"><img style="height:150px;" src="/Images/snippet.jpg" /></a>
                         @*<iframe src="http://www.google.com"></iframe>*@
                         <p>@item.description</p>
+                        <a href="@Url.Action("Delete", new { id = item.ID })">Delete</a>
+                       }
+                       else
+                       {
+                        <a href="@Url.Action("Details",new { id = item.ID })"><img style="height:150px;" src="@item.image" /></a>
+                            @*<iframe src="http://www.google.com"></iframe>*@
+                            <p>@item.description</p>
+                            <a href="@Url.Action("Delete", new { id = item.ID })">Delete</a>
+                       }
+                       
 
                     </div>
                 </div>

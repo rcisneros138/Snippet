@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Snippets.Controllers
 {
@@ -85,6 +86,7 @@ namespace Snippets.Controllers
 
         //    }
         //}
+
         public Image byteArrayToImage(byte[] byteArrayIn)
         {
             MemoryStream ms = new MemoryStream(byteArrayIn);
@@ -154,6 +156,64 @@ namespace Snippets.Controllers
 
             return RedirectToAction("ChromeCreate");
         }
+        public void LoadImage(string imageUri, string path)
+        {
+
+            //byte[] plainTextBytes = System.Text.Encoding.UTF8.GetBytes(imageUri);
+            //string newBytes =Convert.ToBase64String(plainTextBytes);
+
+            //string baseString = newBytes.Substring(imageUri.IndexOf(',') + 1);
+            //byte[] bytes = Convert.FromBase64String(baseString);
+
+            try
+            {
+                int beginningOfImageData = imageUri.IndexOf(',') + 1;
+                int endOfImageData = imageUri.IndexOf('\"');
+                string baseString = imageUri.Substring(beginningOfImageData, imageUri.Length - beginningOfImageData - 1);
+
+
+                byte[] bytes = Convert.FromBase64String(baseString);
+
+                Image image;
+                using (MemoryStream ms = new MemoryStream(bytes))
+                {
+                    using (image = Image.FromStream(ms))
+                    {
+                        image.Save(path, ImageFormat.Jpeg);
+                    }
+                }
+            }
+            catch 
+            {
+
+                
+            }
+            try
+            {
+                int beginningOfImageData = imageUri.IndexOf(',') + 1;
+                string baseString = imageUri.Substring(beginningOfImageData);
+                byte[] bytes = Convert.FromBase64String(baseString);
+
+                Image image;
+                using (MemoryStream ms = new MemoryStream(bytes))
+                {
+                    using (image = Image.FromStream(ms))
+                    {
+                        image.Save(path, ImageFormat.Jpeg);
+                    }
+                }
+
+            }
+            catch
+            {
+
+            }
+            
+            
+    
+       
+           
+        }
 
         public ActionResult ChromeCreate(ExtensionInfo info)
         {
@@ -168,6 +228,11 @@ namespace Snippets.Controllers
             {
                 collectionsForDropdown.Add(new SelectListItem() { Text = collection.Title, Value = collection.ID.ToString() });
             }
+            string UniqueFileName = string.Format(@"{0}.jpeg", Guid.NewGuid());
+            string path1 = HttpContext.Server.MapPath("~/Images/");
+            string path = path1 + UniqueFileName;
+            string[] dbpath = path.Split(new string[] { "Snippets\\Snippets" }, StringSplitOptions.None);
+            LoadImage(TempData["imageData"].ToString(), path);
 
             Collections_Snippet_CombinedModel model = new Collections_Snippet_CombinedModel
             {
@@ -177,9 +242,12 @@ namespace Snippets.Controllers
                 snippet = new Snippet()
                 {
                     Link = TempData["UrlData"].ToString(),
-                    image = TempData["imageData"].ToString()
+                    image = dbpath[1] 
+                    // save image locally with the name being the ID
                 }
             };
+
+            
             return View(model);
         }
         [HttpPost]
@@ -196,12 +264,8 @@ namespace Snippets.Controllers
                 Snippet snippet = collection.snippet;
                 snippet.SnippetCollection = CurrentSnippetCollection;
                 snippet.SubmitterUserId = User.Identity.GetUserId();
-              
-
-
                 CurrentSnippetCollection.snippets.Add(snippet);
                 
-
                 db.snippets.Add(snippet);
             try
             {
