@@ -151,6 +151,7 @@ namespace Snippets.Controllers
         }
         public ActionResult extensionView(FormCollection data)
         {
+            
             TempData["imageData"] = data["imageData"]; 
             TempData["UrlData"] = data["url"];
 
@@ -158,61 +159,56 @@ namespace Snippets.Controllers
         }
         public void LoadImage(string imageUri, string path)
         {
-
-            //byte[] plainTextBytes = System.Text.Encoding.UTF8.GetBytes(imageUri);
-            //string newBytes =Convert.ToBase64String(plainTextBytes);
-
-            //string baseString = newBytes.Substring(imageUri.IndexOf(',') + 1);
-            //byte[] bytes = Convert.FromBase64String(baseString);
+           bool isConverted = false;
 
             try
             {
-                int beginningOfImageData = imageUri.IndexOf(',') + 1;
-                int endOfImageData = imageUri.IndexOf('\"');
-                string baseString = imageUri.Substring(beginningOfImageData, imageUri.Length - beginningOfImageData - 1);
-
-
-                byte[] bytes = Convert.FromBase64String(baseString);
-
-                Image image;
-                using (MemoryStream ms = new MemoryStream(bytes))
+                if (isConverted == false)
                 {
-                    using (image = Image.FromStream(ms))
+                    int beginningOfImageData = imageUri.IndexOf(',') + 1;
+                    int endOfImageData = imageUri.IndexOf('\"');
+                    string baseString = imageUri.Substring(beginningOfImageData, imageUri.Length - beginningOfImageData - 1);
+
+
+                    byte[] bytes = Convert.FromBase64String(baseString);
+
+                    Image image;
+                    using (MemoryStream ms = new MemoryStream(bytes))
                     {
-                        image.Save(path, ImageFormat.Jpeg);
+                        using (image = Image.FromStream(ms))
+                        {
+                            image.Save(path, ImageFormat.Jpeg);
+                        }
                     }
+                    isConverted = true;
+                }
+                else
+                {
+
                 }
             }
-            catch 
-            {
-
-                
-            }
+            catch { }
             try
             {
-                int beginningOfImageData = imageUri.IndexOf(',') + 1;
-                string baseString = imageUri.Substring(beginningOfImageData);
-                byte[] bytes = Convert.FromBase64String(baseString);
-
-                Image image;
-                using (MemoryStream ms = new MemoryStream(bytes))
+                if (isConverted == false)
                 {
-                    using (image = Image.FromStream(ms))
+                    int beginningOfImageData = imageUri.IndexOf(',') + 1;
+                    string baseString = imageUri.Substring(beginningOfImageData);
+                    byte[] bytes = Convert.FromBase64String(baseString);
+
+                    Image image;
+                    using (MemoryStream ms = new MemoryStream(bytes))
                     {
-                        image.Save(path, ImageFormat.Jpeg);
+                        using (image = Image.FromStream(ms))
+                        {
+                            image.Save(path, ImageFormat.Jpeg);
+                        }
                     }
                 }
+                else { }
 
             }
-            catch
-            {
-
-            }
-            
-            
-    
-       
-           
+            catch { }
         }
 
         public ActionResult ChromeCreate(ExtensionInfo info)
@@ -231,7 +227,9 @@ namespace Snippets.Controllers
             string UniqueFileName = string.Format(@"{0}.jpeg", Guid.NewGuid());
             string path1 = HttpContext.Server.MapPath("~/Images/");
             string path = path1 + UniqueFileName;
+
             string[] dbpath = path.Split(new string[] { "Snippets\\Snippets" }, StringSplitOptions.None);
+            
             LoadImage(TempData["imageData"].ToString(), path);
 
             Collections_Snippet_CombinedModel model = new Collections_Snippet_CombinedModel

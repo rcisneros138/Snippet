@@ -120,6 +120,7 @@ namespace Snippets.Controllers
                 newSnip.Link = snippet.Link;
                 newSnip.SnippetCollection = snippet.SnippetCollection;
                 newSnip.description = snippet.description;
+                newSnip.image = snippet.image;
                 db.snippets.Add(newSnip);
                 db.SaveChanges();
                 listCopy.Add(snippet);

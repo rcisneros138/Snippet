@@ -23,10 +23,11 @@
             <br />
             <div class="tileItemP text-center">
                 <div class="hvr-grow-shadow">
-                    <p>@item.Title</p>
-                    <a href="@Url.Action("Details","snippetCollections", new { id = item.ID })"><img class="snippetBackground" src="~/Images/snippet.jpg" /></a>
+                    <p class="buttonCollectionHome">@item.Title</p>
                     <br />
-                    <a href="@Url.Action("SaveCollection","snippetCollections", new { id = item.ID })">Save</a>
+                    <a href="@Url.Action("Details","snippetCollections", new { id = item.ID })"><img class="snippetBackground" style="height:150px; width:17em;" src="/Images/snipsnap.png" /></a>
+                    <br />
+                    <a style="width:17em;" class="buttonCollectionHome" href="@Url.Action("SaveCollection","snippetCollections", new { id = item.ID })">Save</a>
                     @*<iframe src="http://www.google.com"></iframe>*@
 
 

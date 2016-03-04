@@ -324,6 +324,39 @@ ul.contact li a.icon-rss:before
 	font-weight: 600;
 	color: #FFF;
 }
+.buttonCollection{
+    display: inline-block;
+	padding: 1.3em 3em;
+	background: lightseagreen;
+	-moz-transition: opacity 0.25s ease-in-out;
+	-webkit-transition: opacity 0.25s ease-in-out;
+	-o-transition: opacity 0.25s ease-in-out;
+	-ms-transition: opacity 0.25s ease-in-out;
+	transition: opacity 0.25s ease-in-out;
+	letter-spacing: 0.20em;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #FFF;
+    border:none;
+}
+.buttonCollectionHome{
+    display: inline-block;
+	padding: 1.3em 2em;
+	background: white;
+	-moz-transition: opacity 0.25s ease-in-out;
+	-webkit-transition: opacity 0.25s ease-in-out;
+	-o-transition: opacity 0.25s ease-in-out;
+	-ms-transition: opacity 0.25s ease-in-out;
+	transition: opacity 0.25s ease-in-out;
+	letter-spacing: 0.20em;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: lightseagreen;
+    border:none;
+}
+
 
 	.button
 {

@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/animate.css" />
     @Scripts.Render("~/bundles/parallax")
 </head>
-<h2>@Model.Title</h2>
+<h2 style="text-align:center">@Model.Title</h2>
 
 <div class="container">
     <div id="contentP" class="contentP">
@@ -20,8 +20,18 @@
             
             <div class="tileItemP text-center">
                 <div class="hvr-grow-shadow">
-                    <p>@snippet.Link</p>
-                    <a href="@Url.Action("Details","Snippets", new { id = snippet.ID })"><img class="snippetBackground" src="~/Images/snippet.jpg" /></a>
+                    
+                    @if (snippet.image == null)
+                    {
+                        <a href="@snippet.Link"><img class="snippetBackground" src="/Images/snippet.jpg" /></a>
+                        <p>@snippet.description</p>
+                    }
+                    else
+                    {
+                        <a href="@snippet.Link"><img class="snippetBackground" src="@snippet.image" /></a>
+                        <p>@snippet.description</p>
+                    }
+                    
                     @*<iframe src="http://www.google.com"></iframe>*@
 
                     <p></p>
