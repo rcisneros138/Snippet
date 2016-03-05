@@ -25,11 +25,14 @@
                     {
                         <a href="@snippet.Link"><img class="snippetBackground" src="/Images/snippet.jpg" /></a>
                         <p>@snippet.description</p>
+                        <br />
+                        @*<a href="@Url.Action("Delete","Snippets", new { id = snippet.ID })">Delete</a>*@
                     }
                     else
                     {
                         <a href="@snippet.Link"><img class="snippetBackground" src="@snippet.image" /></a>
                         <p>@snippet.description</p>
+                        @*<a href="@Url.Action("Delete","Snippets", new { id = snippet.ID })">Delete</a>*@
                     }
                     
                     @*<iframe src="http://www.google.com"></iframe>*@

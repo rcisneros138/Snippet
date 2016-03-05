@@ -345,6 +345,7 @@
     <Content Include="Views\Snippets\extensionView.cshtml" />
     <Content Include="Views\Shared\_layoutExtension.cshtml" />
     <Content Include="Views\Snippets\ChromeCreate.cshtml" />
+    <Content Include="Views\Snippets\extensionConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

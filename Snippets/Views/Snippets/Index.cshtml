@@ -35,16 +35,18 @@
                         @*<a href="@Url.Action("Details",new { id = item.ID })"><img style="height:150px;" src="/Images/snippet.jpg" /></a>*@
                         <a href="@item.Link"><img style="height:150px;" src="/Images/snippet.jpg" /></a>
 
-                        @*<iframe src="http://www.google.com"></iframe>*@
-                        <p>@item.description</p>
+                         <br />
+                        <p class="buttonCollectionHome">@item.description</p>
+                        <br />
                         <a href="@Url.Action("Delete", new { id = item.ID })">Delete</a>
                        }
                        else
                        {
                         @*<a href="@Url.Action("Details",new { id = item.ID })"><img style="height:150px;" src="@item.image" /></a>*@
                         <a href="@item.Link"><img style="height:150px;" src="@item.image" /></a>
-                            @*<iframe src="http://www.google.com"></iframe>*@
-                            <p>@item.description</p>
+                            <br />
+                            <p class="buttonCollectionHome">@item.description</p>
+                            <br />
                             <a href="@Url.Action("Delete", new { id = item.ID })">Delete</a>
                        }
                        

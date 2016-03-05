@@ -284,10 +284,12 @@ namespace Snippets.Controllers
             }
        
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("extensionConfirmation"); // redirect to confirmation
+        }
 
-
-            return RedirectToAction("Index");
+        public ActionResult extensionConfirmation()
+        {
+            return View();
         }
  
 
