@@ -2,17 +2,14 @@
 
 @{
     ViewBag.Title = "ChromeCreate";
+    Layout = "~/Views/Shared/_layoutExtension.cshtml";
 }
 
-<h2>ChromeCreate</h2>
-
-@using (Html.BeginForm()) 
+<body style="background-color:white; height:auto">
+@using (Html.BeginForm())
 {
-
-    
-    
     <div class="form-horizontal">
-        <h4>Snippet</h4>
+        <h4>Create Snippet</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
@@ -20,9 +17,9 @@
         
 
         <div class="form-group">
-            @Html.LabelFor(model => model.snippet.description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @*@Html.LabelFor(model => model.snippet.description, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
-                @Html.EditorFor(model => model.snippet.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.snippet.description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Description" } })
                 @Html.ValidationMessageFor(model => model.snippet.description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,13 +33,11 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-5 col-md-10">
+                <input type="submit" value="Create" class="button" />
             </div>
         </div>
     </div>
 }
+ </body>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

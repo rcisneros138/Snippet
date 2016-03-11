@@ -1,22 +1,11 @@
 ﻿@model IEnumerable<Snippets.Models.snippetCollection>
 
-@*<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link rel="stylesheet" type="text/css" href="~/Content/hover.css" />
-    <link rel="stylesheet" type="text/css" href="~/Content/animate.css" />
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Bundles/Masonry")
-</head>*@
+
 
 
 <br />
-
-<div class="container">
+@* put offset on this div to center it *@
+<div class="container"> 
     <div id="contentP" class="contentP">
         @foreach (var item in Model)
         {
@@ -28,7 +17,7 @@
                     <a href="@Url.Action("Details","snippetCollections", new { id = item.ID })"><img class="snippetBackground" style="height:150px; width:17em;" src="/Images/snipsnap.png" /></a>
                     <br />
                     <a style="width:17em;" class="buttonCollectionHome" href="@Url.Action("SaveCollection","snippetCollections", new { id = item.ID })">Save</a>
-                    @*<iframe src="http://www.google.com"></iframe>*@
+                    
 
 
 
@@ -44,7 +33,7 @@ $(document).ready(function() {
 
     var $container = $('#contentP');
     $container.masonry({
-        columnWidth: 200,
+        columnWidth: 150,
         itemSelector: '.tileItemP',
         isFitWidth: true,
         isAnimated: !Modernizr.csstransitions

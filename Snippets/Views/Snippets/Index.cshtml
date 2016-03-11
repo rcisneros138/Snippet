@@ -73,12 +73,15 @@
 $(document).ready(function() {
 
     var $container = $('#content');
-    $container.masonry({
-        columnWidth: 200,
-        itemSelector: '.tileItem',
-        isFitWidth: true,
-        isAnimated: !Modernizr.csstransitions
-    })
+    $container.imagesLoaded(function(){
+        $container.masonry({
+            columnWidth: 200,
+            itemSelector: '.tileItem',
+            isFitWidth: true,
+            isAnimated: !Modernizr.csstransitions
+        })
+    });
+   
     var $children = $container.children();
     $children.addClass("animated zoomIn");
 

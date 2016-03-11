@@ -229,8 +229,11 @@ namespace Snippets.Controllers
             string path = path1 + UniqueFileName;
 
             string[] dbpath = path.Split(new string[] { "Snippets\\Snippets" }, StringSplitOptions.None);
-            
-            LoadImage(TempData["imageData"].ToString(), path);
+            try
+            {
+                LoadImage(TempData["imageData"].ToString(), path);
+            }
+            catch {  };
 
             Collections_Snippet_CombinedModel model = new Collections_Snippet_CombinedModel
             {

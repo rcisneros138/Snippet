@@ -37,7 +37,8 @@ namespace Snippets
                     "~/Content/bootstrap.css"
                 ));
             bundles.Add(new ScriptBundle("~/Bundles/Masonry").Include(
-                    "~/Scripts/masonry.pkgd.min.js"
+                    "~/Scripts/masonry.pkgd.min.js",
+                    "~/Scripts/imagesloaded.pkgd.min.js"
                 ));
         }
     }
